@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>自定义组件</title>
+</head>
+
+<body>
+    <!-- 2、创建完自定义组件，就要去使用它 -->
+    <!-- 构建组件模板 -->
+    <ol id="app">
+        <!-- 创建另外一个todo-item的组件实例 -->
+        <todo-item></todo-item>
+    </ol>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        //1、定义名字为todo-item组件
+        //component方法并不能够自动提示，需要注意。
+        //第一个参数：组件的名字，第二个参数：组件的实现细节
+        Vue.component('todo-item', {
+            template: '<li>这是一个待办事项</li>'
+        });
+        //3、创建一个Vue实例，一个组件本质上就是一个实例，有实例才会给组件赋值。
+        var vue = new Vue({
+           el:'#app',
+           data:{
+
+           }
+        })
+    </script>
+</body>
+
+</html>

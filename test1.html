@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- 
+    1、编码
+    2、title是显示的标题
+    3、其它的都不显示。
+-->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>test1.html</title>
+</head>
+
+<!-- body里面存控件和script -->
+<body>
+    <div id="app">
+        <!-- p是段落的意思 -->
+        <p>{{ message }}</p>
+    </div>
+    <!-- 引入vue.js文件用一个script文件 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- 代码用另外的一个script文件 -->
+    <script>
+        // 代码里面的逻辑
+        //1、首选通过#app找到id为app的那个组件
+        //2、然后给这个组件通过data赋值，其中message的值为Hello Vue.js
+        new Vue({
+            el: '#app',
+            data: {
+                message: 'Hello Vue.js!'
+            }
+        })
+    </script>
+
+
+</body>
+
+</html>

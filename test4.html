@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>遍历指令</title>
+</head>
+<body>
+    <div id="app">
+        <ol>
+            <!-- v-for是遍历的指令 -->
+            <li v-for="(item,index) in items">
+                {{item.text}}
+            </li>
+        </ol>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var vue = new Vue({
+           el:'#app',
+           data:{
+               //items是一个集合
+               items:[
+                // 每一个对象用{} 表示，对象间的分隔用，分隔
+                    {text:"我爱前端"},
+                    {text:"我爱大前端"}
+               ]
+           }
+        })
+    </script>
+</body>
+</html>

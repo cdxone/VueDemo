@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app2">
+        <!--
+            1、v-bind 特性被称为指令。
+            2、v-，以表示它们是 Vue 提供。
+            3、该指令的意思是：“将这个元素节点的 title 等于  Vue 实例的 message 的值”。
+            4、span相当于是一个文本，行内样式，比如在一行内的2个字进行加错，这个时候就能用span进行包裹。
+        -->
+        <span :title="message">
+            鼠标悬停几秒钟查看此处动态绑定的提示信息！!!!!!
+        </span>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+
+        var vue =  new Vue({
+            el: '#app2',
+            data: {
+                message: '页面加载于 ' + new Date().toLocaleString()
+            }
+        })
+
+    </script>
+</body>
+
+</html>

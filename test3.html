@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>控制一个元素是否显示</title>
+</head>
+<body>
+    <div id="app-3">
+        <!-- v-if可以用来绑定是否可见 -->
+        <p v-if="seen">看看能够看得见我？</p>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        // 因为是变量，所以必须要用var这种类型去接受，不能用别的变量去接受，比如Vue a
+        var a = new Vue({
+            el:'#app-3',
+            data:{
+                seen:true
+            }
+        })
+    </script>
+
+</body>
+</html>
