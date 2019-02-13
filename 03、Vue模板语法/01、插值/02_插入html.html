@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 
+            1、如果采用双大括号，会将<span style="color:red">This should be red</span>解析为文本，显然不是我们想要的。
+            2、而此时的{{}}相当于一个盒子，承载Vue对象的属性。
+        -->
+        如果想要将
+        <p>Using mustaches: {{ rawHtml }}</p>
+        <p>Using v-html directive:
+            <!--
+                1、通过F12,观察控制台的Elements,发现最终将vue对象的rawHtml插入到了下面的div中 
+                2、v-html相当于是一个识别器，相当于是一个照妖镜，可以让它显示出原形，显示出Vue对象属性本来的样子。
+            -->
+            <div v-html="rawHtml">
+            </div>
+        </p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var vue = new Vue({
+            el: '#app',
+            data: {
+                rawHtml: '<span style="color:red">This should be red</span>'
+            }
+        })
+    </script>
+</body>
+
+</html>

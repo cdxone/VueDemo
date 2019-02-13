@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn">点击Button,执行方法1</button>
+    <button id="btn2">点击Button,执行方法2</button>
+    <button id="btn3">点击Button,执行方法3</button>
+<script>
+
+        //点击事件的第一种写法
+        var btn = document.getElementById("btn")
+        btn.onclick = click
+        //方法的写法,也是最常见的写法
+        function click() {
+            window.alert("111!!!")
+        }
+
+        //点击事件的第二种写法，❤ ❤注意顺序。
+        var btn2 = document.getElementById("btn2")
+        //方法的另外一种写法，这种形式的方法，会导致作用于的提升。
+        var click2 = function(){
+            window.alert("222!!!")
+        }
+        btn2.onclick = click2
+        
+        //点击事件的第三种写法
+        var btn3 = document.getElementById('btn3')
+        btn3.onclick = function(){
+            window.alert("333!!!")
+        }
+    </script>
+</body>
+
+</html>

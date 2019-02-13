@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 
+            1、动态的给div赋值id。
+            2、很少用。
+            3、在两个标签之间用{{}},在标签里面用v-bind。
+        -->
+        <div v-bind:id="dynamicId">你好,中国</div>
+        <button @click="click1">点击获得值</button>
+        <!-- 
+            1、控制button可用或者是不可用
+            2、动态的给标签的属性赋值，使用v-bind。
+        -->
+        <button v-bind:disabled="isButtonDisabled" @click="testClick">看看是否可以点击</button>
+        <button @click="clickable">修改点击的属性</button>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var vue = new Vue({
+           el:'#app',
+           data:{
+                dynamicId:'abc',
+                isButtonDisabled:true
+           },
+           methods: {
+               click1:function(){
+                    window.alert(document.getElementById("abc").innerText)
+               },
+               testClick:function(){
+                   window.alert("可以点击")
+               },
+               clickable:function(){
+                   vue.isButtonDisabled = !vue.isButtonDisabled
+               }
+           }
+        })
+    </script>
+</body>
+</html>

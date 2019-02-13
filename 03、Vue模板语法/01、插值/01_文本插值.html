@@ -1,0 +1,47 @@
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <style type="text/css">
+            /* 元素选择器 */
+            div {
+                text-align: center
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="app">
+            <div>
+                <button @click="click">点击我，更新Vue属性的值，进而更新DOM元素的值。</button>
+            </div>
+            <span>{{msg}}</span>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script>
+            var vue = new Vue({
+                el: '#app',
+                data: {
+                    msg:222 //vue对象中的msg的属性值会赋值到DOM的{{msg}}上。
+                },
+                methods: {
+                    click: function () {
+                        vue.msg = 'success!'
+                        //这个地方也可以使用this.msg = 'success'
+                        //this.msg = 'success'
+
+                        //注意：使用这种办法是不行的，$引用的属性必须是Vue实例的属性，比如e1,data，message。
+                        //而此时msg是自定义的属性，或者称为对象属性，通过这种办法是访问不到的。
+                        //❤ ❤ ❤ ❤ ❤注意$引用的是自己人，❤ ❤ ❤ ❤ ❤而没有$则会去找外部，分工明确。
+                        //this.$msg = 'success'
+                    }
+                }
+            })
+        </script>
+    </body>
+
+    </html>

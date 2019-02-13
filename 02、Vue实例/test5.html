@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <div>
+            <button @click="updataData">点击更新Vue对象的数据</button>
+
+        </div>
+        <div>
+            <span>{{a}}</span>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var vue = new Vue({
+            el: '#app',
+            data: {
+                a: 1 //这个a映射到了页面上的DOM元素
+            },
+            //1、实例被创建之后执行的方法,this表示Vue实例。
+            //2、一般用来请求数据，此时DOM元素还没有挂载，页面元素还没有产生。
+            created: function () {
+                console.log("created-" + this.a)
+            }
+            //1、DOM元素挂载调用的方法。也就是页面元素产生调用的方法。
+            , mounted() {
+                console.log("mounted")
+            },
+            beforeUpdate() {
+                console.log('更新之前')
+            },
+            //1、由于数据更新导致虚拟DOM重新渲染而执行此方法。
+            updated() {
+                console.log("updated")
+            },
+            //1、在页面销毁之前执行的方法。
+            beforeDestroy() {
+                console.log("beforeDestroy");
+            }
+            ,
+            //1、页面销毁的时候执行的方法。
+            destroyed() {
+                console.log("destroyed")
+            },
+            methods: {
+                updataData: function () {
+                    //满足两个条件的时候：数据更新 + DOM重新重新渲染。这个时候回触发beforeUpdate和update方法。
+                    this.a = 2
+                    console.log('数据更新了')
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

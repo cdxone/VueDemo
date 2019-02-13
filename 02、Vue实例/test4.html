@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <div>
+            <button @click="watch">改变vue.a的值，看看是否能触发监听？</button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        //创建数据对象
+        var data = { a: 1 }
+        //创建Vue对象
+        var vue = new Vue({
+            el: '#app',
+            data: data,
+            methods: {
+                watch: function () {
+                    vue.a = 2
+                }
+            }
+        })
+        //对Vue的a属性进行监听，当a的值变化的时候，会执行这个方法
+        vue.$watch('a',function(newValue,oldValue){
+            window.alert("改变了！")
+        }) 
+    </script>
+</body>
+
+</html>

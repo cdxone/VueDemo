@@ -1,37 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <style type="text/css">
+        /* 元素选择器 */
+        body {
+            text-align: center;
+        }
+
+        /* 元素选择器 */
+        div {
+            margin-top: 10px;
+        }
+    </style>
 </head>
+
 <body>
     <div id="app">
-        <button @click="judgeEaual">数据源heVue对象的属性是否一样？</button>
-        <button @click="modifyVm">修改Vm的值，看看data的值有什么变化？</button>
+        <div>
+            <button @click="judgeEaual">数据源和Vue对象的属性是否一样？</button>
+        </div>
+        <div>
+            <button @click="modifyVm">修改Vm属性a的值为544，看看data的值有什么变化？</button>
+        </div>
+        <div>
+            <button @click="modifyData">修改data属性a的值100，看看vm的值有什么变化？</button>
+        </div>
     </div>
-        
+
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script>
-        var data = {a:1}
+        //数据对象
+        var data = { a: 1 }
         //此时data对象就和vue对象完全绑定,属性也是完全共享的。
         var vue = new Vue({
-           el:'#app',
-           data:data,
-           methods: {
-               //数据源和vue对象的属性值是否一样
-               judgeEaual:function(){
-                   window.alert(data.a == vue.a)
-               },
-               //修改Vm的值，看看data值有什么变化？
-               modifyVm:function(){
-                   //修改vm的值
-                   vue.a = 555
-                   window.alert(data.a)
-               }
-           }
+            el: '#app',
+            data: data,
+            methods: {
+                //数据源和vue对象的属性值是否一样
+                judgeEaual: function () {
+                    window.alert("data和vm的属性值是否一样：" + (data.a == vue.a))
+                },
+                //修改Vm的值，看看data值有什么变化？
+                modifyVm: function () {
+                    //修改vm的值
+                    vue.a = 555
+                    window.alert(data.a)
+                },
+                //修改data的值，看看vm的值有什么变化？
+                modifyData: function () {
+                    data.a = 100
+                    window.alert(vue.a)
+                }
+            }
         })
     </script>
 </body>
+
 </html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn">点击Button,执行方法1</button>
+    <button id="btn2">点击Button,执行方法2</button>
+    <button id="btn3">点击Button,执行方法3</button>
+<script>
+        var btn = document.getElementById("btn")
+        btn.onclick = click
+
+        var btn2 = document.getElementById("btn2")
+        //方法的另外一种写法,这种写法会导致方法作用域的提升。
+        var click2 = function(){
+            window.alert("222!!!")
+        }
+        btn2.onclick = click2
+        
+        //方法的写法
+        function click() {
+            window.alert("111!!!")
+        }
+        
+        var btn3 = document.getElementById('btn3')
+        btn3.onclick = function(){
+            window.alert("333!!!")
+        }
+    </script>
+</body>
+
+</html>

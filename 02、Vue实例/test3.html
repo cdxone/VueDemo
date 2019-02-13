@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style type="text/css">
+       div{
+           text-align: center;
+           margin-top: 10px;
+       }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div>
+            <button @click="judgeEqual">Vue.$data和data值是否一样？</button>
+        </div>
+        <div>
+            <button @click="judgeEqual2">Vue.$e1和document.getElementById('app')值是否一样？</button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        //创建一个数据对象
+        var data = {a:1,b:2}
+        //创建一个vue对象
+        var vue = new Vue({
+           el:'#app',
+           data:data,
+           methods: {
+               //主要用来判断vue.$data值和data值是否一样？
+               judgeEqual:function(){
+                    window.alert("vue.$data===data:" + (vue.$data===data))
+               },
+               judgeEqual2:function(){
+                    window.alert("vue.$e1===document.getElementById('app')"+(vue.$el===document.getElementById('app')))
+               }
+           }
+        })
+    </script>
+</body>
+</html>
