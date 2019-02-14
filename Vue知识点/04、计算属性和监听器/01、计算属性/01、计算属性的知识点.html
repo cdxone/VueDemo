@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* 元素选择器 */
+        p {
+            /* 让p的首行空两个空格 */
+            text-indent: 2em
+        }
+
+        /* 元素选择器 */
+        span {
+            color: red
+        }
+
+        /* 类选择器 */
+        .img1 {
+            /* 这地方大小可以用xxpx，或者可以用25%的形式 */
+            width: 25%;
+            height: 25%;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h1>背景</h1>
+        <p>
+            在学习到模板内可以<span>使用javascrpit表达式</span>的时候，真的是让我<span>眼前一亮</span>，<br />
+            但是在模板内放入太复杂点的表达式的时候，这个时候也会有<span>缺点</span>，究竟是什么缺点呢？<br />
+            它会让模板<span>太难维护</span>。
+        </p>
+
+        <h1>那么该怎么解决呢？</h1>
+        <span>计算属性</span>
+
+        <h1>计算属性的应用场景是什么？</h1>
+        <span>当模板中有<span>太复杂的逻辑</span>，都应该适应计算属性。</span>
+
+        <h1>计算属性的图示</h1>
+        <img src="src/test.png" class="img1"/>
+    </div>
+
+</body>
+
+</html>

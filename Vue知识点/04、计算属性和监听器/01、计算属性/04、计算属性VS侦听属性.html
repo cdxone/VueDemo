@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <h1>需求</h1>
+        <p>要实现这样的一个功能：有一些数据随着其它的一些数据变化而变化。这个时候，可以采用监听属性或者是计算属性。</p>
+
+        <h1>下面分别展示监听属性和计算属性实现功能</h1>
+
+        <h2>监听属性</h2>
+        <p>姓：{{xing}}</p>
+        <p>名：{{ming}}</p>
+        <p>姓名：{{xm}}</p>
+        <button @click="changeX">改变姓</button>
+        <button @click="changeM">改变名</button>
+
+        <h2>计算属性</h2>
+        <p>姓：{{xing2}}</p>
+        <p>名：{{ming2}}</p>
+        <p>姓名：{{xm2}}</p>
+        <button @click="changeX2">改变姓</button>
+        <button @click="changeM2">改变名</button>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        //创建vue对象
+        var vue = new Vue({
+            el: '#app',
+            data: {
+                xing: '张',
+                ming: '三',
+                xm:'张三',
+                xing2: '王',
+                ming2: '老王',
+            },
+            //方法的集合
+            methods: {
+                //改变姓
+                changeX: function () {
+                    this.xing = '李'
+                },
+                //改变名
+                changeM: function () {
+                    this.ming = '四'
+                },
+                //改变姓
+                changeX2: function () {
+                    this.xing2 = '田'
+                },
+                //改变名
+                changeM2: function () {
+                    this.ming2 = '老六'
+                }
+            },
+            //监听的集合
+            watch: {
+                //xing的变化监听
+                //监听的回调可以有两个值，也可以有一个值。
+                xing:function(newValue){
+                    this.xm = newValue + this.ming
+                },
+                //ming的变化监听
+                ming:function(newValue){
+                    this.xm = this.xing + newValue
+                }
+            },
+            //计算属性集合
+            computed: {
+                //利用计算属性
+                //这个属性就和这两个属性绑定起来了，当这两个属性变化的时候,也会出发xm2的重新执行，然后重新渲染页面
+                xm2:function(){
+                    return this.xing2 + this.ming2 
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <p>姓：{{x}}</p>
+        <p>名：{{m}}</p>
+        <p>姓名:{{xm}}</p>
+        <button @click='changeX'>改变姓</button>
+        <button @click='changeM'>改变名</button>        
+        <button @click='changeX_M'>改变姓名</button>        
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var vue = new Vue({
+            el: '#app',
+            //数据集合
+            data: {
+                x:'张',
+                m:'三',
+            },
+            //方法集合
+            methods: {
+                //改变姓
+                changeX:function(){
+                    this.x = '李'
+                },
+                //改变名
+                changeM:function(){
+                    this.m = '四'
+                },
+                //改变姓名
+                changeX_M:function(){
+                    this.xm = '王-老五'
+                }
+            },
+            //计算属性的集合
+            computed: {
+                xm:{
+                    //1、当this.x和this.m发生改变的时候回执行这个方法。
+                    //2、输出的时候用的。
+                    get:function(){
+                        return this.x + '-' + this.m
+                    },
+                    //1、当this.xm发生改变的时候执行这个方法。
+                    //2、当输入的时候用的。
+                    set:function(newValue){
+                        var names = newValue.split("-")
+                        this.x = names[0]
+                        this.m = names[1]
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

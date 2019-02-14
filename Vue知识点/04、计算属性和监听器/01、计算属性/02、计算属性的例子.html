@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <p>原始的信息：{{message}}</p>
+        <p>翻转后的信息：{{reverseMessage}}</p>
+        <button v-on:click="modifyMessage">修改message的值</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var vue = new Vue({
+            el: '#app',
+            data: {
+                message:'aaaa,bbbb'
+            },
+            //计算属性注意的事项
+            //1、类似于方法。
+            //2、将方法放到computed中。
+            //3、必须有返回值。
+    
+            //计算属性的运行流程
+            //1、当创建这个对象。
+            //2、然后执行计算属性集合中的方法，比如reverseMessage，然后返回值。
+            //3、然后将这个值返回到模板中。
+            computed: {
+                reverseMessage:function(){
+                    //this:表示vue对象
+                    //split
+                    return this.message.split(',').reverse().join(",")
+                }
+            },
+            methods: {
+                modifyMessage:function(){
+                    //执行流程
+                    //1、修改Vue对象中的message的属性值。
+                    //2、由于vue.reverseMessage依赖于vue.message属性，所以当vue的message属性发生变化的时候，此时vue的reverseMessage属性也会发生变化。
+                    //最终实现了一种“联动”的效果。
+                    this.message = 'cccc,dddd';
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
