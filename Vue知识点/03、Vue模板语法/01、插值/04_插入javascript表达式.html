@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 此时使用了javascript表达式 -->
+        <p>{{num+1}}</p>
+        <button @click="modifyData">点击修改num的值</button>
+        <p>{{ok?'YES':'NO'}}</p>
+        <button @click="modifyData2">点击修改ok的值</button>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var vue = new Vue({
+            el: '#app',
+            data: {
+                num: 5,
+                ok:true
+            },
+            methods: {
+                modifyData:function(){
+                    this.num = 7
+                },
+                modifyData2:function(){
+                    this.ok = false
+                }
+            }
+        })
+
+    </script>
+</body>
+
+</html>

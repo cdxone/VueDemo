@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 
+        1、指令是什么？
+        指令通俗点讲就是一个“管家”：这个组件的一个“管家”，它用来监听对应值,根据值做出对应的响应。
+    -->
+</head>
+
+<body>
+    <div id="app">
+        <p v-if="seen">你是否能够看的见我</p>
+        <button @click="modifyData">改变vue的seen的值</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var vue = new Vue({
+            el: '#app',
+            data: {
+                seen:true
+            },
+            methods: {
+                modifyData:function(){
+                    this.seen = !this.seen
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

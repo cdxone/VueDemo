@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- v-bind的缩写 -->
+        <p><a v-bind:href="url1">点击我跳转到百度</a></p>
+        <p><a :href="url2">点击我跳转到百度2</a></p>
+
+        <!-- v-on的缩写 -->
+        <p><button v-on:click="click1">点我！</button></p>
+        <p><button @click="click2">点我2！</button></p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var vue = new Vue({
+           el:'#app',
+           data:{
+             url1:'https://www.baidu.com',
+             url2:'https://www.baidu.com'
+           },
+           methods: {
+               click1:function(){
+                   window.alert("1111")
+               },
+               click2:function(){
+                   window.alert("222")
+               }
+           }
+        })
+    </script>
+</body>
+
+</html>
