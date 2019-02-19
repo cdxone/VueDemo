@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 
+            1、此处给div通过v-bind:class绑定了一个对象，用来给div设置class属性。
+            2、此处的testObject其实是一个返回对象的计算属性。
+         -->
+        <div v-bind:class="testObject"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var vue = new Vue({
+           el:'#app',
+           data:{
+              
+           },
+           //计算属性都在computed中去书写。
+           computed: {
+               testObject:function(){
+                   //返回的必须是一个对象，因为v-bind:class绑定的是一个对象。
+                   return {
+                        alive:true,
+                        // 如果使用的属性中间是加入了-，那么就必须加入单引号。
+                        'test-shuxing':true
+                   };
+               }
+           }
+        })
+    </script>
+</body>
+</html>

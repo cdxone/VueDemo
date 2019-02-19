@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 
+            1、绑定style其实就是绑定了一个对象。
+            2、如果属性用-（横线）分隔，然后用单引号括起来。
+            3、类似于android中的匿名对象。
+            4、在对象中属性可以用驼峰的形式，比如fontSize:fontSize+ 'px'
+            或者用小横线的方式 font-size:fontSize + 'px'
+         -->
+        <div v-bind:style="{color:activeColor,'font-size':fontSize + 'px'}">
+            {{message}}
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var vue = new Vue({
+           el:'#app',
+           data:{
+             activeColor:'red',
+             fontSize:15,
+             message:'你好,世界'
+           }
+        })
+    </script>
+</body>
+</html>

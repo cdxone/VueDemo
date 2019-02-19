@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 
+            1、绑定的class属性中带有三元运算符。
+            2、这里面有3个值，isActive,test1,test2,都需要在data中设置值。
+         -->
+        <div v-bind:class="[isActive ? test1:'',test2]">
+            {{message}}
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var vue = new Vue({
+           el:'#app',
+           data:{
+                isActive:true,
+                test1:'test1class',
+                test2:'test2class',
+                message:'你好'
+           }
+        })
+    </script>
+</body>
+</html>

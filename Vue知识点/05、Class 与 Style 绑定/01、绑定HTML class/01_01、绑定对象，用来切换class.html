@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 1、active这个class存在与否将取决于数据属性isActive:
+            如果isActivie为true，表示显示这个class,如果isActive为false，表示不显示这个class。
+            2、可以看出来，v-bind:class绑定的是一个对象，用来动态的切换class。
+            3、然后在浏览器的页面中，点击F12，然后点击“Elements”，然后就可以看出渲染的div为class为active。
+            4、{active:isActive}：样式就像是一个“对象”的形式。
+        -->
+        <div v-bind:class="{active:isActive}">
+            {{message}}
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var vue = new Vue({
+           el:'#app',
+           data:{
+                isActive:true,
+                hasError:false,
+                message:'你好'
+           }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 
+            1、v-bind:class:意思就是绑定了一个class,很形象生动。
+            2、v-bind:class:可以绑定对象，也可以绑定数组，用来控制class显示与否,这个例子就是用来绑定数组。
+            3、在浏览器的页面中，F12,点击Elements，查看渲染的值。
+         -->
+        <div v-bind:class="[test1,test2]"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var vue = new Vue({
+           el:'#app',
+           data:{
+              test1:'active',
+              test2:'text-danger'
+           }
+        })
+    </script>
+</body>
+</html>
