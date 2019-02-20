@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 并不是根元素只可以是div，还可以是别的 -->
+    <ul id="example-1">
+        <!-- 
+            流程：
+            1、遍历items,然后取出item，然后去渲染li
+            2、这个地方也可以用v-for="item in items"
+         -->
+        <li v-for="(item,index) in items">
+            {{item.message}}
+        </li>
+    </ul>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        //创建一个vue对象
+        var vue = new Vue({
+            //指向的是哪一个id
+           el:'#example-1',
+           //数据对象
+           data:{
+            //数据，是一个数组
+             items:[
+                 {message:'小明'},
+                 {message:'小红'}
+             ]
+           }
+        })
+    </script>
+</body>
+</html>

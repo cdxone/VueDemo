@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 
+            多个元素选择性的渲染
+            是什么？
+            1、要想对多个元素进行选择性的渲染，必须要使用v-if + template组合，请看下面的例子。
+            有什么引用场景？
+            比如针对一块的UI区域，我们可以采用这种方式比较简单。
+         -->
+         <template v-if="testvalue">
+            <h1>你好，世界</h1>
+            <h1>天下，太平</h1>
+            <p>非诚，勿扰</p>
+        </template>
+        <button v-on:click="changeData">改变vue对象中的值</button>
+        
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script>
+            var vue = new Vue({
+               el:'#app',
+               //数据的对象
+               data:{
+                  testvalue:true
+               },
+               //方法的对象
+               methods: {
+                   changeData:function(){
+                       this.testvalue = !this.testvalue
+                   }
+               }
+            })
+        </script>
+    </div>
+</body>
+</html>

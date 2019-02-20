@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 
+            v-show是什么？
+                它就是一个隐身F。
+
+            v-show为什么要引入，既然已经有了v-if，为什么还要引入v-show?
+                1、带有v-show的元素始终会被渲染并保留在DOM中。
+                2、v-show只是简单的切换元素的CSS属性display。
+
+            v-show如何使用？
+
+         -->
+        <h1 v-show="testvalue">Hello World!</h1>
+        <button v-on:click="changeDate">改变数据</button>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var vue = new Vue({
+           el:'#app',
+           data:{
+              testvalue:true
+           },
+           methods: {
+               changeDate:function(){
+                   this.testvalue = false
+               }
+           }
+        })
+    </script>
+</body>
+</html>

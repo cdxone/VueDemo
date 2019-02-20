@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        
+        <div v-if="type === 'A'">
+            A
+        </div>
+        <div v-else-if="type === 'B'">
+            B
+        </div>
+        <div v-else-if="type === 'C'">
+            C
+        </div>
+        <div v-else>
+            Other
+        </div>
+        
+        <button @click="typeA">改变type为A</button>
+        <button @click="typeB">改变type为B</button>
+        <button @click="typeC">改变type为C</button>
+        <button @click="typeD">改变type为D</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var vue = new Vue({
+           el:'#app',
+           //数据的对象
+           data:{
+               type:'D'
+           },
+           //方法的对象
+           methods: {
+               typeA:function(){
+                    this.type = 'A'
+               },
+               typeB:function(){
+                    this.type = 'B'
+               },
+               typeC:function(){
+                    this.type = 'C'
+               },
+               typeD:function(){
+                    this.type = 'D'
+               }
+           }
+        })
+    </script>
+</body>
+</html>

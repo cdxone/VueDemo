@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 
+            现象：
+            1、我们看看流程，由于testvalue默认值'username',所以页面上渲染的是显示Enter your username的input，我们在input中输入了“你好”。
+            2、当我们点击button，修改了testvalue的值，此时页面上渲染为了显示Enter your Email的input，但是此时在这个input中显示了“你好”。
+            
+            显然这是有问题的，为什么有这样的问题？
+            因为Vue为了尽可能高效的渲染组件，通常会复用已经有的元素，而不会重新的创建元素。所以初始的时候，创建了一个显示Enter your username
+            的input，然后点击按钮，会复用这个input，就会导致输入的内容也会复用，仅仅只是替换了它的placeHolder。
+
+            解决办法：
+            添加一个key,用来告诉Vue，这两个元素是独立的，不要进行复用。
+            请看06的例子。
+         -->
+
+        <template v-if="testvalue === 'username'">
+            <label>Username</label>
+            <input placeholder="Enter your username">
+        </template>
+        <template v-else>
+            <label>Email</label>
+            <input placeholder="Enter your Email">
+        </template>
+        <div>
+            <button v-on:click="changeDate">改变数据</button>
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        //创建一个Vue的对象
+        var vue = new Vue({
+            el: '#app',
+            //数据的对象
+            data: {
+                testvalue: 'username'
+            },
+            //方法的对象
+            methods: {
+                changeDate: function () {
+                    this.testvalue = 'email'
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

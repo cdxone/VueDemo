@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 
+            1、v-if的值只有为true的时候，h1才会被渲染。
+            v-if：是否隐身，相当于一个隐身F。
+         -->
+        <h1 v-if="testvalue">这是测试数据</h1>
+        <button v-on:click="changeDate">改变vue的数据</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var vue = new Vue({
+           el:'#app',
+           //存放数据的对象
+           data:{
+              testvalue:true
+           },
+           //存放方法的对象
+           methods: {
+              changeDate:function(){
+                  this.testvalue = !this.testvalue;
+              }   
+           }
+        })
+    </script>
+</body>
+
+</html>
