@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <button @click="concat1">concat:用于连接两个或多个数组</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var vue = new Vue({
+           el:'#app',
+           data:{
+
+           },
+           //方法的集合
+           methods: {
+               concat1:function(){
+                    // concat方法介绍
+                    // contact的极致：首先给当前的数组创建一个副本，然后将接受到的参数添加到这个副本的末尾，然后返回
+
+                    var arr1 = ['大漠','30']
+                    //concat可以传入两个元素
+                    var arr2 = arr1.concat('Blog','2014')
+                    console.log(arr2)
+                    
+                    //不仅仅可以传入元素，还能传入数组
+                    var arr3 = arr2.concat('1',['a','b'],'c',['d'])
+                    console.log(arr3)
+
+                    //可以传入一个控制，表示生成了一个arr3的副本。
+                    var arr4 = arr3.concat()
+                    console.log(arr4)
+               }
+           }
+        })
+    </script>
+</body>
+</html>

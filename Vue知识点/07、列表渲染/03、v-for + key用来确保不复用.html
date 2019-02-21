@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 
+            1、当Vue用v-for更新已经渲染过的元素列表时，它默认采用“就地复用”原则。
+            2、为了告诉Vue这个哥么，不要去复用元素，此时可以给每个item增加一个key,由于需要动态的绑定key，所以采用v-bind:key的形式。
+            3、只要v-bind:key的值是一个唯一的值就行。
+         -->
+        <div v-for="(item,index) in items" v-bind:key="index">
+            <div>
+                <!-- 加入javascript表达式 -->
+                {{item.message + " " + index}}
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var vue = new Vue({
+           el:'#app',
+           data:{
+              items:[
+                  {message:"你好"},{message:"你坏"},{message:"世界"},{message:"真大"}
+              ]
+           }
+        })
+    </script>
+</body>
+</html>
