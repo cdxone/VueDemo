@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 遍历items，然后渲染li -->
+    <div id="app">
+        <ul>
+            <!-- 
+                流程
+                1、遍历obj中的对象，然后取出value的值，
+                2、然后生成多个li,然后将值赋值到{{value}}
+            -->
+            <li v-for="value in obj">{{value}}</li>
+        </ul>
+    
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var vue = new Vue({
+           el:'#app',
+           data:{
+              numbers:[1,2,3,4,5,6,7,8]
+           },
+            //计算属性的运行流程
+            //1、当创建这个对象。
+            //2、然后执行计算属性集合中的方法，比如reverseMessage，然后返回值。
+            //3、然后将这个值返回到模板中。
+           computed: {
+               obj:function(){
+                  //filter中的方法，相当于就是一个条件。 
+                  return this.numbers.filter(function(num){
+                      return num % 2 === 0
+                  })
+               }
+           }
+        })
+    </script>
+</body>
+</html>

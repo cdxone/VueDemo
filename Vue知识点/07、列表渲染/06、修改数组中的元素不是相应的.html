@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <ul v-for="(item,index) in items" v-bind:key="index">
+            <li>{{item.message}}</li>
+        </ul>
+        <button @click="changeDate">改变items中元素的数据</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var vue = new Vue({
+           el:'#app',
+           data:{
+              items:[
+                  {message:'A'},{message:'B'},{message:'C'},{message:'D'}
+              ]
+           },
+           methods: {
+               changeDate:function(){
+                //❤❤❤❤❤ 第一种问题
+                //注意：这种写法不是响应式的，不会触发状态的更新。   
+                // this.items[1]='AAAA'
+
+                //所以有下面的几种解决办法：
+                //第一种解决办法：使用Vue.set
+                //参数1：数据源，参数2，数据源中的下标，参数3，新的数据。
+                //Vue.set(this.items, 0, {message:'AAAA'})
+                //也可以使用vm.$set实例方法，这个是全局方法Vue.set的一个别名，其实他们两同属于第一种方法
+                //vue.$set(vue.items,0,{message:'BBBB'})
+
+                //第二种解决办法：使用vm.items.splice
+                //splice:剪切
+                vue.items.splice(0,2,{message:'CCCC'})
+
+                //❤❤❤❤❤❤ 第二种问题
+                //为了修改items的长度使用this.items.lenght = 2 是不生效的，那么该如何做呢？
+                vue.items.splice(6)
+
+                window.alert(vue.items.length)
+               }
+           }
+        })
+    </script>
+</body>
+</html>

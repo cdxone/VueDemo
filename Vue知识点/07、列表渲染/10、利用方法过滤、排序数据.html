@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 
+            ❤❤❤❤❤ 这种在v-for中调用方法的形式不常见。
+            执行的流程：
+            1、调用了event方法，然后传入的参数为numbers，求出来一个值。
+            2、然后对这个值进行遍历，然后创建多个li，然后将数据显示在中间。
+         -->
+        <ul v-for="item in event(numbers)">
+            <li>{{item}}</li>
+        </ul>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var vue = new Vue({
+           el:'#app',
+           data:{
+               numbers:[1,2,3,4,5,6]
+           },
+           methods: {
+               //过滤数据,定义了这样的一个方法。
+               event:function(ns){
+                   return ns.filter(function(n){
+                      return n % 2 === 0
+                   })
+               }
+           }
+        })
+    </script>
+</body>
+</html>

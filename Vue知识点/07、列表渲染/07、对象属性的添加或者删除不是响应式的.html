@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 遍历属性 -->
+        <ul v-for="value in object">
+            <li>{{value}}</li>
+        </ul>
+
+        <button v-on:click="changeData">增加属性-看看是否是相应性的</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var vue = new Vue({
+            el: '#app',
+            data: {
+                object: {
+                    name: '小红',
+                    age: '25'
+                }
+            },
+            methods: {
+                changeData:function(){
+                    //❤❤❤❤❤ 这是Vue的一个Bug：
+                    //这种方式添加对象的属性，不是响应式的。
+                    //this.object.height = '180'
+
+                    //Vue.set(vue.object, 'height', 180)
+                    //或者用这种写法的另外一种写法：实例的方式
+                    vue.$set(vue.object,'height',200)
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

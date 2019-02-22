@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <ul v-for="value in obj">
+            <li>{{value}}</li>
+        </ul>
+
+        <button @click="addShuXing">添加属性</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var vue = new Vue({
+            el: '#app',
+            //数据的对象
+            data: {
+                obj:{
+                    name: '小红'
+                }
+            },
+            //方法的对象
+            methods: {
+                addShuXing: function () {
+                    //赋值多个属性的时候，应该采用这样的形式。
+                    //创建一个新的对象，让他含有原对象的属性和新的属性。
+                    vue.obj = Object.assign({}, vue.obj,{
+                        age: 27,
+                        height: '160'
+                    })
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
